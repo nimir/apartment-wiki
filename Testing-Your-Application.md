@@ -37,4 +37,4 @@ RSpec.configure do |config|
 end
 ```
 
-Note that we use a `Company` object as our tenant model for storing each tenant and any associated config with it.
+Note that we use a `Company` object as our tenant model for storing each tenant and any associated config with it. This `Company` model has an `after_commit` that actually creates an Apartment tenant based on the subdomain.
