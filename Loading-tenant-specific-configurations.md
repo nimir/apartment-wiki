@@ -1,6 +1,6 @@
 If you want to load some configurations specific to your tenant you can do something like this
 
-    #config/initalizers/country_specific.rb
+    #config/initializers/country_specific.rb
     COUNTRY_CONFIGS = YAML.load_file(Rails.root.join('config', 'country_specific' , 'config.yml'))
 
     #config/country_specific/config.yml
