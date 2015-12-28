@@ -16,7 +16,7 @@ RSpec.configure do |config|
     # Use transactions for tests
     DatabaseCleaner.strategy = :transaction
     # Truncating doesn't drop schemas, ensure we're clean here, app *may not* exist
-    Apartment::Database.drop('app') rescue nil
+    Apartment::Tenant.drop('app') rescue nil
     # Create the default tenant for our tests
     Company.create!(name: 'Influitive Corp.', subdomain: 'app')
   end
@@ -25,12 +25,12 @@ RSpec.configure do |config|
     # Start transaction for this test
     DatabaseCleaner.start
     # Switch into the default tenant
-    Apartment::Database.switch 'app'
+    Apartment::Tenant.switch! 'app'
   end
 
   config.after(:each) do
     # Reset tentant back to `public`
-    Apartment::Database.reset
+    Apartment::Tenant.reset
     # Rollback transaction
     DatabaseCleaner.clean
   end
